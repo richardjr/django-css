@@ -13,12 +13,15 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # We are called from the parent project directory so save the current directory
         calling_dir = os.getcwd()
+        app = settings.SETTINGS_MODULE
+        # remove the last part of the module
+        app = app.split('.')[0]
         # Change to the directory of the script
         script_dir = os.path.dirname(os.path.realpath(__file__))
         os.chdir(script_dir)
         # Perform the operation using both the parent project directory and the script directory
         if options['operation'] == 'build':
-            sass.compile(dirname=('../../frameworks/bootstrap/scss', f'{calling_dir}/static/css/'), output_style='compressed')
+            sass.compile(dirname=('../../frameworks/bootstrap/scss', f'{calling_dir}/{app}/static/css/'), output_style='compressed')
 
 
 

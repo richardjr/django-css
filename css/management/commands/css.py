@@ -20,17 +20,23 @@ class Command(BaseCommand):
         script_dir = os.path.dirname(os.path.realpath(__file__))
         os.chdir(script_dir)
 
-        frameworks = settings.CSS_FRAMEWORKS if hasattr(settings, 'CSS_FRAMEWORKS') else ['bootstrap', 'fontawesome']
+        frameworks = settings.CSS_FRAMEWORKS if hasattr(settings, 'CSS_FRAMEWORKS') else ['bootstrap', 'fontawesome', 'ibtw']
 
         # Perform the operation using both the parent project directory and the script directory
         if options['operation'] == 'build':
             for framework in frameworks:
-                sass.compile(dirname=(f'../../frameworks/{framework}/scss', f'{calling_dir}/{app}/static/css/'), output_style='compressed')
+                # Compile the scss files to css
+                if framework == 'bootstrap' or framework == 'fontawesome':
+                    sass.compile(dirname=(f'../../frameworks/{framework}/scss', f'{calling_dir}/{app}/static/css/'), output_style='compressed')
 
                 # Specific to the fontawesome framework
                 # Copy the webfonts directory to the static directory
                 if framework == 'fontawesome':
                     os.system(f'cp -r ../../frameworks/fontawesome/webfonts {calling_dir}/{app}/static/')
+
+                # Copy the js libs to the static directory
+                if framework == 'ibtw' or framework == 'bootstrap':
+                    os.system(f'cp -r ../../frameworks/{framework}/js {calling_dir}/{app}/static/')
 
 
 

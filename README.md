@@ -1,6 +1,6 @@
-# django-css
+# django-sui
 
-SCSS based CSS for Django projects.
+SCSS based CSS for Django projects and simple JS frameworks
 
 Currently supports easy local install or bootstrap and fontawesome frameworks with more coming soon
 
@@ -8,7 +8,7 @@ NOTE: This is a work in progress and not ready for production use in anyway (hen
 
 # Design and development principles
 
-NO NPM, NO CDN, fed up of installing node_modules for every project I wanted some of the features we come to expect in modern
+Fed up of installing node_modules for every project I wanted some of the features we come to expect in modern
 ui frameworks but without the overhead of node_modules in our python projects or at the very least hide that from the developer.
 
 As a base this project uses the bootstrap for now as development start but with a focus on improvement and simplifying
@@ -17,8 +17,14 @@ using the python libsass package. https://sass.github.io/libsass-python/
 
 # Docs for frameworks
 
+## CSS
+
 * Bootstrap 5 - https://getbootstrap.com/docs/5.0/getting-started/introduction/
 * FortAwesome - https://github.com/FortAwesome/Font-Awesome
+
+## Typescript
+
+* IBTW - Itzy Bitzy Teeny Weeny JS Framework - [IBTW](docs/IBTW.md)
 
 
 Local dev mode in edit mode
@@ -79,6 +85,8 @@ Bootstrap
 
 ```html
 <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+```
 
 Fontawsome
 

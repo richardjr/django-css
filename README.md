@@ -1,8 +1,8 @@
-# django-sui
+# django-sui - Simple UI
 
-SCSS based CSS for Django projects and simple JS frameworks
+Install, Update and manage SCSS, CSS, Javascript, Typescript framework in django from a single command.
 
-Currently supports easy local install or bootstrap and fontawesome frameworks with more coming soon
+Currently supports easy local install of bootstrap, fontawesome and ibtw frameworks with more coming soon
 
 NOTE: This is a work in progress and not ready for production use in anyway (hence no pip packages yet).
 
@@ -30,7 +30,7 @@ using the python libsass package. https://sass.github.io/libsass-python/
 Local dev mode in edit mode
 
 ```bash
-sudo python3 -m pip install --user -e ~/projects/django-css
+sudo python3 -m pip install --user -e ~/projects/django-sui
 ```
 
 Add to your django project
@@ -38,7 +38,7 @@ Add to your django project
 ```python
 INSTALLED_APPS = [
     ...
-    'css',
+    'sui',
     ...
 ]
 
@@ -48,13 +48,14 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 CSS_FRAMEWORKS = [
     'bootstrap',
     'fontawesome',
+    'ibtw'
 ]
 ```
 
 Build / rebuild
 
 ```bash
-python3 manage.py css build
+python3 manage.py sui build
 ```
 
 This will build the framework and place the files in the static directory of your project. In default mode it will build
@@ -97,10 +98,27 @@ Fontawsome
 <link rel="stylesheet" href="{% static  'css/solid.css' %}">
 ```
 
+IBTW
+
+```typescript
+import {IBTW} from './ibtw';
+
+let ibtw = new IBTW();
+
+ibtw.onLoad(() => {
+	
+  ibtw.click('.drop-action', (event) => {
+	// Do some stuff when .drop-action is clicked  
+  })
+});
+```
+
+Full docs here: [IBTW](docs/IBTW.md)
 
 
 # TODO
 
+* typescript builder
 * Javascipt builder
 * Dynamic updater - We really need to pull the lastest frameworks via git as part of the build process
   * This will allow us to keep up to date with the latest versions of the frameworks

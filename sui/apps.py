@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CssConfig(AppConfig):
+class SuiConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'css'
+    name = 'sui'

@@ -6,9 +6,9 @@
   "targets": {
     "frontend": {
       "source": [
-        "css/frameworks/ibtw/js/ibtw.ts"
+        "sui/frameworks/ibtw/js/ibtw.ts"
       ],
-      "distDir": "css/frameworks/ibtw/js"
+      "distDir": "sui/frameworks/ibtw/js"
     }
   },
   "scripts": {

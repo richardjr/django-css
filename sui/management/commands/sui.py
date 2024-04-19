@@ -4,7 +4,7 @@ import sass
 import os
 
 class Command(BaseCommand):
-    help = 'css framework'
+    help = 'sui framework'
 
     # add the arguments
     def add_arguments(self, parser):

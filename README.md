@@ -82,23 +82,37 @@ webfonts/
 
 Add to your base.html
 
-Bootstrap
+## Let sui manage the static files
+
+You can allow sui to do all your include for you by adding the following to your base.html
 
 ```html
+{% load sui %}
+{% sui %}
+
+```
+
+## Manually include the files in your base.html as needed
+
+### Bootstrap
+
+```html
+{% load static %}
 <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
 <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
 ```
 
-Fontawsome
+### Fontawsome
 
 ```html
+{% load static %}
 <link rel="stylesheet" href="{% static  'css/fontawesome.css' %}">
 <link rel="stylesheet" href="{% static  'css/regular.css' %}">
 <link rel="stylesheet" href="{% static  'css/brands.css' %}">
 <link rel="stylesheet" href="{% static  'css/solid.css' %}">
 ```
 
-IBTW
+### IBTW
 
 ```typescript
 import {IBTW} from './ibtw';

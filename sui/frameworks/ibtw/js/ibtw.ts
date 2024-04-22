@@ -4,7 +4,7 @@
  * This class provides methods to initialize the class, establish click events on elements, and establish an event for when the DOM is loaded and ready.
  */
 export class IBTW {
-
+    debug: boolean = false;
     /**
      * constructor
      *
@@ -12,7 +12,10 @@ export class IBTW {
      * There can only be one special method with the name "constructor" in a class.
      * Here, it calls the init method to initialize the class.
      */
-    constructor() {
+    constructor(debug?: boolean) {
+        if (debug) {
+            this.debug = debug;
+        }
         this.init();
     }
 
@@ -25,6 +28,17 @@ export class IBTW {
         console.log('Itzy Bitzy Teeny Weeny on the client side!');
     }
 
+    _performActionOnQuery(query:string,action:Function) {
+        const element = document.querySelectorAll(query) as NodeListOf<HTMLElement>;
+        // Check if a valid element was found
+        if (!element) {
+            return;
+        }
+        for (let i = 0; i < element.length; i++) {
+            action(element[i]);
+        }
+    }
+
     /**
      * click
      *
@@ -33,15 +47,51 @@ export class IBTW {
      * @param {function} callback - A function to execute when the event is triggered.
      */
     click(query:string, callback: (e: Event) => void) {
-        const element = document.querySelectorAll(query) as NodeListOf<HTMLElement>;
-        // Check if a valid element was found
-        if (!element) {
-            return;
-        }
-        // Add the event listener to the elements
-        for (let i = 0; i < element.length; i++) {
-            element[i].addEventListener('click', callback);
-        }
+        this._performActionOnQuery(query, (element: HTMLElement) => {
+            element.addEventListener('click', callback);
+        });
+    }
+
+    /**
+     * Toggle a class on an element or elements
+     * @param className
+     * @param query
+     */
+    toggleClass(className:string, query: string): void {
+        this._performActionOnQuery(query, (element: HTMLElement) => {
+            element.classList.toggle(className);
+        });
+    }
+
+    /**
+     * Remove a class from an element or elements
+     * @param className
+     * @param query
+     */
+    removeClass(className:string, query: string): void {
+        this._performActionOnQuery(query, (element: HTMLElement) => {
+            element.classList.remove(className);
+        });
+    }
+
+    /**
+     * Add a class to an element or elements
+     * @param className
+     * @param query
+     */
+    addClass(className:string, query: string): void {
+        this._performActionOnQuery(query, (element: HTMLElement) => {
+            element.classList.add(className);
+        });
+    }
+
+    /**
+     * print alias for console.log but we only want to use this method in debug mode
+     * @param string
+     */
+    print(string: any) {
+        if (this.debug)
+            console.log(string);
     }
 
     /**

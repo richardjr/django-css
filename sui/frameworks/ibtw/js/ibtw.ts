@@ -103,4 +103,24 @@ export class IBTW {
     onLoad(callback: () => void) {
         document.addEventListener('DOMContentLoaded', callback);
     }
+
+    /**
+     * Disable an element or elements
+     * @param query
+     */
+    disable(query: string): void {
+        this._performActionOnQuery(query, (element: HTMLElement) => {
+            element.setAttribute('disabled', 'true');
+        });
+    }
+
+    /**
+     * Enable an element or elements
+     * @param query
+     */
+    enable(query: string): void {
+        this._performActionOnQuery(query, (element: HTMLElement) => {
+            element.removeAttribute('disabled');
+        });
+    }
 }

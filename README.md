@@ -2,13 +2,13 @@
 
 Install, Update and manage SCSS, CSS, Javascript, Typescript framework in django from a single command.
 
-Currently supports easy local install of bootstrap, fontawesome and ibtw frameworks with more coming soon
+Currently, it supports easy local installation of bootstrap, fontawesome and ibtw frameworks with more coming soon
 
-NOTE: This is a work in progress and not ready for production use in anyway (hence no pip packages yet).
+NOTE: This is a work in progress and not ready for production use in any way (hence no pip packages yet).
 
 # Design and development principles
 
-Fed up of installing node_modules for every project I wanted some of the features we come to expect in modern
+Fed up with installing node_modules for every project I wanted some of the features we come to expect in modern
 ui frameworks but without the overhead of node_modules in our python projects or at the very least hide that from the developer.
 
 As a base this project uses the bootstrap for now as development start but with a focus on improvement and simplifying
@@ -132,7 +132,7 @@ Full docs here: [IBTW](docs/IBTW.md)
 
 # TODO
 
-* typescript builder
+* ~~typescript builder~~
 * Javascipt builder
 * Dynamic updater - We really need to pull the lastest frameworks via git as part of the build process
   * This will allow us to keep up to date with the latest versions of the frameworks
